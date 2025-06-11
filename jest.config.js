@@ -1,0 +1,45 @@
+/**
+ * Jest configuration file
+ * Using JavaScript instead of TypeScript to avoid ts-node dependency
+ */
+const nextJest = require('next/jest');
+
+const createJestConfig = nextJest({
+  // Provide the path to your Next.js app to load next.config.js and .env files
+  dir: './',
+});
+
+// Add any custom config to be passed to Jest
+const customJestConfig = {
+  // Add more setup options before each test is run
+  setupFilesAfterEnv: ['<rootDir>/jest.setup.js'],
+  // Indicates whether each individual test should be reported during the run
+  verbose: true,
+  // The test environment that will be used for testing
+  testEnvironment: 'jest-environment-jsdom',
+  // Test coverage configuration
+  collectCoverage: true,
+  coverageDirectory: 'coverage',
+  collectCoverageFrom: [
+    'app/**/*.{js,jsx,ts,tsx}',
+    '!app/**/*.d.ts',
+    '!app/**/_*.{js,jsx,ts,tsx}',
+    '!app/**/layout.{js,jsx,ts,tsx}',
+    '!**/*.stories.{js,jsx,ts,tsx}',
+    '!**/*.test.{js,jsx,ts,tsx}',
+    '!**/node_modules/**',
+    '!app/api/**',
+  ],
+  // Coverage thresholds
+  coverageThreshold: {
+    global: {
+      branches: 80,
+      functions: 80,
+      lines: 80,
+      statements: 80,
+    },
+  },
+};
+
+// createJestConfig is exported this way to ensure that next/jest can load the Next.js config which is async
+module.exports = createJestConfig(customJestConfig);
