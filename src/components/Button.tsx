@@ -5,9 +5,9 @@
  * - Uses type-safe props
  */
 
-import React from 'react';
+import React from "react";
 
-type ButtonVariant = 'primary' | 'secondary';
+type ButtonVariant = "primary" | "secondary";
 
 interface ButtonProps {
   children: React.ReactNode;
@@ -15,34 +15,41 @@ interface ButtonProps {
   disabled?: boolean;
   variant?: ButtonVariant;
   className?: string;
-  'data-testid'?: string;
+  "data-testid"?: string;
 }
 
 export function Button({
   children,
   onClick,
   disabled = false,
-  variant = 'primary',
-  className = '',
-  'data-testid': testId = 'button',
+  variant = "primary",
+  className = "",
+  "data-testid": testId = "button",
 }: ButtonProps) {
   // Base classes for all button variants
-  const baseClasses = 'px-4 py-2 rounded transition-colors focus:outline-none focus:ring-2';
-  
+  const baseClasses =
+    "px-4 py-2 rounded transition-colors focus:outline-none focus:ring-2";
+
   // Variant-specific classes
   const variantClasses = {
-    primary: 'bg-blue-500 text-white hover:bg-blue-600 focus:ring-blue-300',
-    secondary: 'bg-gray-200 text-gray-800 hover:bg-gray-300 focus:ring-gray-400',
+    primary: "bg-blue-500 text-white hover:bg-blue-600 focus:ring-blue-300",
+    secondary:
+      "bg-gray-200 text-gray-800 hover:bg-gray-300 focus:ring-gray-400",
+    tertiary: "bg-gray-200 text-gray-800 hover:bg-gray-300 focus:ring-gray-400",
+    quaternary:
+      "bg-gray-200 text-gray-800 hover:bg-gray-300 focus:ring-gray-400",
+    quinary: "bg-gray-200 text-gray-800 hover:bg-gray-300 focus:ring-gray-400",
+    senary: "bg-gray-200 text-gray-800 hover:bg-gray-300 focus:ring-gray-400",
   };
-  
+
   // Disabled state classes
-  const disabledClasses = 'opacity-50 cursor-not-allowed';
-  
+  const disabledClasses = "opacity-50 cursor-not-allowed";
+
   // Combine all classes based on props
   const buttonClasses = `
     ${baseClasses} 
     ${variantClasses[variant]} 
-    ${disabled ? disabledClasses : ''} 
+    ${disabled ? disabledClasses : ""} 
     ${className}
   `.trim();
 
