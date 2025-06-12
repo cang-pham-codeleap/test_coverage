@@ -10,6 +10,11 @@ jobs:
     name: Upload to Teamscale
     runs-on: ubuntu-22.04
     steps:
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
       - name: Checkout code
         uses: actions/checkout@v3
         with:
