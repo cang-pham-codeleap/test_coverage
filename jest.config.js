@@ -27,8 +27,11 @@ const customJestConfig = {
     "!app/**/layout.{js,jsx,ts,tsx}",
     "!**/*.stories.{js,jsx,ts,tsx}",
     "!**/*.test.{js,jsx,ts,tsx}",
-    "!**/node_modules/**",
     "!app/api/**",
+    "!**/*.config.js",
+    "!**/*.config.ts",
+    "!coverage/**",
+    "!**/node_modules/**",
   ],
   // Coverage thresholds
   coverageThreshold: {
