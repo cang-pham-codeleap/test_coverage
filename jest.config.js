@@ -43,7 +43,7 @@ const customJestConfig = {
     },
   },
   // Coverage report formats
-  coverageReporters: ["lcov", "text", "text-summary"],
+  coverageReporters: ["lcov", "text", "text-summary", "cobertura"],
 };
 
 // createJestConfig is exported this way to ensure that next/jest can load the Next.js config which is async

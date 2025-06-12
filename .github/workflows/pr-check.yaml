@@ -23,7 +23,7 @@ jobs:
           user: "cang.pham@codeleap.de"
           partition: "cang-pham-codeleap/test_coverage"
           accesskey: eth3ZppHFItr8WSDmMJrYHXGvzRiMTIE
-          format: "lcov"
-          files: "coverage/lcov.info"
+          format: "cobertura"
+          files: "coverage/cobertura-coverage.xml"
           revision: "${{ github.event.pull_request.head.sha }}"
           message: "PR #${{ github.event.pull_request.number }}: ${{ github.event.pull_request.title }}"
