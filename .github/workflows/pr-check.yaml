@@ -10,6 +10,11 @@ jobs:
     name: Upload to Teamscale
     runs-on: ubuntu-22.04
     steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
       - name: teamscale-upload
         uses: "cqse/teamscale-upload-action@v2.9.5"
         with:
@@ -20,3 +25,5 @@ jobs:
           accesskey: eth3ZppHFItr8WSDmMJrYHXGvzRiMTIE
           format: "lcov"
           files: "coverage/lcov.info"
+          revision: "${{ github.event.pull_request.head.sha }}"
+          message: "PR #${{ github.event.pull_request.number }}: ${{ github.event.pull_request.title }}"
