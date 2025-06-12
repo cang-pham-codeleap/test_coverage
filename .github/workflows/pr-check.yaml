@@ -31,14 +31,14 @@ jobs:
             infra:
               - .github/**
 
-  build:
-    needs: filter
-    name: Build & Test
-    uses: ./.github/workflows/workflow-build.yaml
-    permissions:
-      contents: read
-      pull-requests: write
-    with:
-      version: ${{ github.event.pull_request.number }}
-      environment-name: Development
-    secrets: inherit
+  teamscale-upload:
+    - name: Upload to Teamscale
+      uses: "cqse/teamscale-upload-action@v2.9.5"
+      with:
+        server: "https://test-coverage-1.teamscale.io"
+        project: "jtl_test"
+        user: "cang.pham@codeleap.de"
+        partition: "cang-pham-codeleap/test_coverage"
+        accesskey: eth3ZppHFItr8WSDmMJrYHXGvzRiMTIE
+        format: "lcov"
+        files: "coverage/lcov.info"
