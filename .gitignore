@@ -43,3 +43,5 @@ next-env.d.ts
 teamscale-upload
 .swc/
 .swc
+
+/coverage
