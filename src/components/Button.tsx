@@ -6,11 +6,12 @@
  */
 
 import React from "react";
+import { HTMLAttributeAnchorTarget, ReactNode } from "react";
 
 type ButtonVariant = "primary" | "secondary";
 
 interface ButtonProps {
-  children: React.ReactNode;
+  children: ReactNode;
   onClick?: () => void;
   disabled?: boolean;
   variant?: ButtonVariant;
