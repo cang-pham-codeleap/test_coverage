@@ -31,6 +31,7 @@ const customJestConfig = {
     "!**/*.config.js",
     "!**/*.config.ts",
     "!coverage/**",
+    "!**/node_modules/**",
   ],
   // Coverage thresholds
   coverageThreshold: {
