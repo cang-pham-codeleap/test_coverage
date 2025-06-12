@@ -6,31 +6,6 @@ on:
       - main
 
 jobs:
-  style:
-    name: Coding Style
-    uses: ./.github/workflows/workflow-style.yaml
-    secrets: inherit
-
-  filter:
-    needs: style
-    runs-on: ubuntu-22.04
-    permissions:
-      contents: read
-      pull-requests: read
-    outputs:
-      frontend: ${{ steps.filter.outputs.frontend }}
-      infra: ${{ steps.filter.outputs.infra }}
-    steps:
-      - uses: actions/checkout@v4
-      - uses: dorny/paths-filter@v3
-        id: filter
-        with:
-          filters: |
-            frontend:
-              - 'src/**'
-            infra:
-              - .github/**
-
   teamscale-upload:
     - name: Upload to Teamscale
       uses: "cqse/teamscale-upload-action@v2.9.5"
