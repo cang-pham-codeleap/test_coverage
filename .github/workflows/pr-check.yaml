@@ -9,12 +9,14 @@ jobs:
   teamscale-upload:
     name: Upload to Teamscale
     runs-on: ubuntu-22.04
-    uses: "cqse/teamscale-upload-action@v2.9.5"
-    with:
-      server: "https://test-coverage-1.teamscale.io"
-      project: "jtl_test"
-      user: "cang.pham@codeleap.de"
-      partition: "cang-pham-codeleap/test_coverage"
-      accesskey: eth3ZppHFItr8WSDmMJrYHXGvzRiMTIE
-      format: "lcov"
-      files: "coverage/lcov.info"
+    steps:
+      - name: teamscale-upload
+        uses: "cqse/teamscale-upload-action@v2.9.5"
+        with:
+          server: "https://test-coverage-1.teamscale.io"
+          project: "jtl_test"
+          user: "cang.pham@codeleap.de"
+          partition: "cang-pham-codeleap/test_coverage"
+          accesskey: eth3ZppHFItr8WSDmMJrYHXGvzRiMTIE
+          format: "lcov"
+          files: "coverage/lcov.info"
