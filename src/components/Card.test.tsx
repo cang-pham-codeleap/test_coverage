@@ -16,8 +16,7 @@ describe("Card Component", () => {
   test("renders card with children", () => {
     render(<Card>Card Content</Card>);
     const cardContent = screen.getByText("Card Content");
-    expect(cardContent).toBeInTheDocument();
-    expect(cardContent.parentElement?.parentElement).toMatchSnapshot();
+    expect(cardContent).toMatchSnapshot();
   });
 
   // Test default variant
@@ -26,7 +25,7 @@ describe("Card Component", () => {
     // Find card by its content and then get the parent div (card container)
     const cardContent = screen.getByText("Default Card");
     const cardElement = cardContent.parentElement?.parentElement;
-    expect(cardElement?.className).toContain("bg-white");
+    expect(cardElement?.className).toMatchSnapshot();
   });
 
   // Test bordered variant
@@ -34,7 +33,7 @@ describe("Card Component", () => {
     render(<Card variant="bordered">Bordered Card</Card>);
     const cardContent = screen.getByText("Bordered Card");
     const cardElement = cardContent.parentElement?.parentElement;
-    expect(cardElement?.className).toContain("border-gray-200");
+    expect(cardElement?.className).toMatchSnapshot();
   });
 
   // Test elevated variant
@@ -42,26 +41,26 @@ describe("Card Component", () => {
     render(<Card variant="elevated">Elevated Card</Card>);
     const cardContent = screen.getByText("Elevated Card");
     const cardElement = cardContent.parentElement?.parentElement;
-    expect(cardElement?.className).toContain("shadow-md");
+    expect(cardElement?.className).toMatchSnapshot();
   });
 
   // Test different padding sizes
   test("applies correct padding size classes", () => {
     const { rerender } = render(<Card padding="none">No Padding</Card>);
     let cardContent = screen.getByText("No Padding");
-    expect(cardContent.className).toContain("p-0");
+    expect(cardContent.className).toMatchSnapshot();
 
     rerender(<Card padding="sm">Small Padding</Card>);
     cardContent = screen.getByText("Small Padding");
-    expect(cardContent.className).toContain("p-3");
+    expect(cardContent.className).toMatchSnapshot();
 
     rerender(<Card padding="md">Medium Padding</Card>);
     cardContent = screen.getByText("Medium Padding");
-    expect(cardContent.className).toContain("p-4");
+    expect(cardContent.className).toMatchSnapshot();
 
     rerender(<Card padding="lg">Large Padding</Card>);
     cardContent = screen.getByText("Large Padding");
-    expect(cardContent.className).toContain("p-6");
+    expect(cardContent.className).toMatchSnapshot();
   });
 
   // Test title rendering
@@ -69,8 +68,7 @@ describe("Card Component", () => {
     const title = "Card Title";
     render(<Card title={title}>Card with Title</Card>);
     const titleElement = screen.getByText(title);
-    expect(titleElement).toBeInTheDocument();
-    expect(titleElement.className).toContain("font-medium");
+    expect(titleElement).toMatchSnapshot();
   });
 
   // Test footer rendering
@@ -78,7 +76,7 @@ describe("Card Component", () => {
     const footer = "Card Footer";
     render(<Card footer={<div>{footer}</div>}>Card with Footer</Card>);
     const footerElement = screen.getByText(footer);
-    expect(footerElement).toBeInTheDocument();
+    expect(footerElement).toMatchSnapshot();
   });
 
   // Test divider visibility
@@ -90,7 +88,8 @@ describe("Card Component", () => {
     );
     // Using querySelectorAll to find dividers (elements with border-t class)
     // We need to use querySelector on the container since querySelectorAll doesn't exist on RTL's screen
-    const container = screen.getByText("Card Content").parentElement?.parentElement;
+    const container =
+      screen.getByText("Card Content").parentElement?.parentElement;
     const dividers = container?.querySelectorAll(".border-t");
     expect(dividers?.length).toBe(2); // One for title and one for footer
   });
@@ -102,7 +101,8 @@ describe("Card Component", () => {
         Card Content
       </Card>
     );
-    const container = screen.getByText("Card Content").parentElement?.parentElement;
+    const container =
+      screen.getByText("Card Content").parentElement?.parentElement;
     const dividers = container?.querySelectorAll(".border-t");
     expect(dividers?.length).toBe(0);
   });
@@ -113,7 +113,7 @@ describe("Card Component", () => {
     render(<Card className={customClass}>Custom Card</Card>);
     const cardContent = screen.getByText("Custom Card");
     const cardElement = cardContent.parentElement?.parentElement;
-    expect(cardElement?.className).toContain(customClass);
+    expect(cardElement?.className).toMatchSnapshot();
   });
 
   // Test additional props
@@ -124,27 +124,26 @@ describe("Card Component", () => {
       </Card>
     );
     const cardElement = screen.getByTestId("custom-card");
-    expect(cardElement).toHaveAttribute("id", "special-card");
     expect(cardElement).toMatchSnapshot();
   });
 
   // Test combining complex features
   test("correctly renders a complex card with all features", () => {
     render(
-      <Card 
-        title="Complex Card" 
-        variant="bordered" 
-        padding="lg" 
+      <Card
+        title="Complex Card"
+        variant="bordered"
+        padding="lg"
         footer={<button>Action Button</button>}
       >
         Complex Card Content
       </Card>
     );
-    
-    expect(screen.getByText("Complex Card")).toBeInTheDocument();
-    expect(screen.getByText("Complex Card Content")).toBeInTheDocument();
-    expect(screen.getByRole("button")).toBeInTheDocument();
-    
+
+    expect(screen.getByText("Complex Card")).toMatchSnapshot();
+    expect(screen.getByText("Complex Card Content")).toMatchSnapshot();
+    expect(screen.getByRole("button")).toMatchSnapshot();
+
     const cardContent = screen.getByText("Complex Card Content");
     const cardElement = cardContent.parentElement?.parentElement;
     expect(cardElement).toMatchSnapshot();
