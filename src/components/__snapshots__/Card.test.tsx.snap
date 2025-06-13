@@ -1,0 +1,61 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Card Component applies additional props to the card element 1`] = `
+<div
+  class="rounded-lg overflow-hidden bg-white"
+  data-testid="custom-card"
+  id="special-card"
+>
+  <div
+    class="p-4"
+  >
+    Card with Custom Props
+  </div>
+</div>
+`;
+
+exports[`Card Component correctly renders a complex card with all features 1`] = `
+<div>
+  <div
+    class="rounded-lg overflow-hidden bg-white border border-gray-200"
+  >
+    <div
+      class="py-3 px-6 font-medium"
+    >
+      Complex Card
+    </div>
+    <div
+      class="border-t border-gray-200"
+    />
+    <div
+      class="p-6"
+    >
+      Complex Card Content
+    </div>
+    <div
+      class="border-t border-gray-200"
+    />
+    <div
+      class="py-3 px-6"
+    >
+      <button>
+        Action Button
+      </button>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Card Component renders card with children 1`] = `
+<div>
+  <div
+    class="rounded-lg overflow-hidden bg-white"
+  >
+    <div
+      class="p-4"
+    >
+      Card Content
+    </div>
+  </div>
+</div>
+`;
