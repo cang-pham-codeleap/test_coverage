@@ -2,7 +2,7 @@
  * Button component with customizable variants
  * - Simple reusable button with primary/secondary variants
  * - Includes disabled state handling
- * - Uses type-safe props
+ * - Uses type-safe props and typescript
  */
 
 import React from "react";
